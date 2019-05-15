@@ -5,30 +5,30 @@ Upload and invoke lambda functions from npm.
 ## Installation
 
 ```sh
-npm i aws-tools
+npm i -g npx
+npm i -D @mpoteat/aws-tools webpack webpack-cli
 ```
 
 Add to package.json:
 
 ```json
 {
-  "scripts": {
-    "upload": "node deploy/upload.js",
-    "invoke": "node deploy/invoke.js"
-  }
+  "arn": "arn:aws:lambda:us-east-1:749275109232548:function:example"
 }
 ```
+
+Must have webpack configuration file defined.
 
 ## Usage
 
 To upload to AWS lambda:
 
 ```sh
-npm run upload
+npx upload
 ```
 
 To invoke:
 
 ```sh
-npm run invoke
+npx invoke
 ```
