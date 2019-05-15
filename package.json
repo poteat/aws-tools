@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/poteat/aws-tools/issues"
   },
-  "homepage": "https://github.com/poteat/aws-tools#readme"
+  "homepage": "https://github.com/poteat/aws-tools#readme",
+  "dependencies": {
+    "chalk": "^2.4.2"
+  }
 }
