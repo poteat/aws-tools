@@ -1,0 +1,26 @@
+{
+  "name": "aws-tools",
+  "version": "1.0.0",
+  "description": "Upload and invoke lambda functions from npm.",
+  "bin": {
+    "upload": "./bin/upload.js",
+    "invoke": "./bin/invoke.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poteat/aws-tools.git"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "upload",
+    "invoke",
+    "tooling"
+  ],
+  "author": "poteat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poteat/aws-tools/issues"
+  },
+  "homepage": "https://github.com/poteat/aws-tools#readme"
+}
