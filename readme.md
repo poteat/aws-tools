@@ -17,7 +17,7 @@ Add to package.json:
 }
 ```
 
-Must have webpack configuration file defined.
+Must have webpack configuration file defined. Must have ~/.aws/credentials.
 
 ## Usage
 
