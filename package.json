@@ -1,6 +1,6 @@
 {
   "name": "@mpoteat/aws-tools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Upload and invoke lambda functions from npm.",
   "bin": {
     "upload": "bin/upload.js",
