@@ -23,7 +23,9 @@ let bad = s => console.log(chalk.bgRed(s));
   }
 
   log("Running lambda instance...");
-  await exec(`aws lambda invoke --function-name ${arn} temp/response.json`);
+  await exec(
+    `aws lambda invoke --function-name ${arn} temp/response.json --cli-read-timeout 0`
+  );
 
   let response = JSON.parse(await readFile("temp/response.json", "utf8")).body;
 
