@@ -26,11 +26,11 @@ let bad = s => console.log(chalk.bgRed(s));
   await exec("npx webpack");
 
   log("Zipping bundle...");
-  await exec("zip temp/bundle.zip . -q -r -x temp/bundle.js");
+  await exec("zip temp/index.zip temp/index.js -q -j");
 
   log("Uploading bundle to AWS...");
   const response = await exec(
-    `aws lambda update-function-code --function-name ${arn} --zip-file fileb://temp/bundle.zip`
+    `aws lambda update-function-code --function-name ${arn} --zip-file fileb://temp/index.zip`
   );
 
   log("Cleaning up staging...");
