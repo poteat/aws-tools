@@ -10,8 +10,7 @@ let good = s => console.log(chalk.green(s));
 let bad = s => console.log(chalk.bgRed(s));
 
 (async () => {
-  await exec("rm -rf temp");
-  await exec("mkdir -p temp");
+  await exec("mkdir -p dist");
 
   log("Getting ARN from package.json...");
   const package = JSON.parse(await readFile("package.json", "utf8"));
@@ -24,13 +23,10 @@ let bad = s => console.log(chalk.bgRed(s));
 
   log("Running lambda instance...");
   await exec(
-    `aws lambda invoke --function-name ${arn} temp/response.json --cli-read-timeout 0`
+    `aws lambda invoke --function-name ${arn} dist/response.json --cli-read-timeout 0`
   );
 
-  let response = JSON.parse(await readFile("temp/response.json", "utf8")).body;
-
-  log("Cleaning up staging...");
-  await exec("rm -rf temp");
+  let response = JSON.parse(await readFile("dist/response.json", "utf8")).body;
 
   good("Success!");
 

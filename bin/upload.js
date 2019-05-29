@@ -10,8 +10,7 @@ let good = s => console.log(chalk.green(s));
 let bad = s => console.log(chalk.bgRed(s));
 
 (async () => {
-  await exec("rm -rf temp");
-  await exec("mkdir -p temp");
+  await exec("mkdir -p dist");
 
   log("Getting ARN from package.json...");
   const package = JSON.parse(await readFile("package.json", "utf8"));
@@ -26,15 +25,12 @@ let bad = s => console.log(chalk.bgRed(s));
   await exec("npx webpack");
 
   log("Zipping bundle...");
-  await exec("zip temp/index.zip temp/index.js -q -j");
+  await exec("zip dist/index.zip dist/index.js -q -j");
 
   log("Uploading bundle to AWS...");
   const response = await exec(
-    `aws lambda update-function-code --function-name ${arn} --zip-file fileb://temp/index.zip`
+    `aws lambda update-function-code --function-name ${arn} --zip-file fileb://dist/index.zip`
   );
-
-  log("Cleaning up staging...");
-  await exec("rm -rf temp");
 
   if (response.stderr !== "") {
     bad("A problem occurred:");
