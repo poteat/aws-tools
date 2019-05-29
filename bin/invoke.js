@@ -2,6 +2,7 @@
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 const readFile = util.promisify(require("fs").readFile);
+const writeFile = util.promisify(require("fs").writeFile)
 
 const chalk = require("chalk");
 
@@ -26,7 +27,9 @@ let bad = s => console.log(chalk.bgRed(s));
     `aws lambda invoke --function-name ${arn} dist/response.json --cli-read-timeout 0`
   );
 
-  let response = JSON.parse(await readFile("dist/response.json", "utf8")).body;
+  let response = JSON.parse(await readFile("dist/response.json", "utf8"));
+
+  await writeFile("dist/response.json", JSON.stringify(response, null, 2))
 
   good("Success!");
 
